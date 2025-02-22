@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY etl.py /app/
 
-RUN pip install boto3 PSYCOPG-BINARY python-dotenv
+RUN pip install boto3 PSYCOPG-BINARY python-dotenv 
 
 
 CMD [ "python","etl.py" ]

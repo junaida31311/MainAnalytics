@@ -4,12 +4,16 @@ pipeline {
     environment {
         AWS_REGION = 'us-east-1'
         ECR_REPO = 'etl-docker-repo'
+        AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS = credentials('AWS_SECRET_ACCESS')
+        IMAGE_TAG = 'latest'
+        LAMBDA_FUNCTION_NAME = 'elt_lambda'
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                git 'git@github.com:junaida31311/MainAnalytics.git'
+                git credentialsId: 'github-credentials', url: 'https://github.com/junaida31311/MainAnalytics.git'
             }
         }
 
